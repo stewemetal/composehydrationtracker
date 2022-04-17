@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ComposeHydrationTracker</string>
+    <string name="main_title">HydrationTracker</string>
+    <string name="bottom_nav_entries">Entries</string>
+    <string name="bottom_nav_stats">Stats</string>
+    <string name="bottom_nav_add">Add</string>
+
+    <string name="title_add">Add drink</string>
+    <string name="description_add">Add drink</string>
+    <string name="water_intake_hint">Water intake</string>
+    <string name="add_custom_value">Add custom value</string>
+    <string name="back_arrow">Back arrow</string>
+    <string name="stats_empty">Can\'t show stats</string>
+</resources>
