@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import hu.stewemetal.composehydrationtracker.domain.HydrationDataSource
+import hu.stewemetal.composehydrationtracker.data.HydrationRepository
 import hu.stewemetal.composehydrationtracker.domain.model.HydrationEntry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EntriesViewModel @Inject constructor(
-    private val dataSource: HydrationDataSource,
+    private val dataSource: HydrationRepository,
 ): ViewModel() {
 
     var uiState by mutableStateOf(EntriesState())

@@ -1,6 +1,5 @@
-package hu.stewemetal.composehydrationtracker.domain
+package hu.stewemetal.composehydrationtracker.data
 
-import hu.stewemetal.composehydrationtracker.data.HydrationEntriesRepository
 import hu.stewemetal.composehydrationtracker.data.model.RoomConsumptionPerDay
 import hu.stewemetal.composehydrationtracker.data.model.RoomHydrationEntry
 import hu.stewemetal.composehydrationtracker.data.model.toDomainModel
@@ -10,21 +9,20 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.logging.Filter
 import javax.inject.Inject
 
-class HydrationDataSource @Inject constructor(
-    private val repository: HydrationEntriesRepository,
+class HydrationRepository @Inject constructor(
+    private val dataSource: HydrationEntriesDataSource,
 ) {
 
     suspend fun entries(): Flow<List<HydrationEntry>> =
-        repository.entries()
+        dataSource.entries()
             .map { entries ->
                 entries.map(RoomHydrationEntry::toDomainModel)
             }
 
     suspend fun stats(): Flow<List<ConsumptionPerDay>> =
-        repository.stats()
+        dataSource.stats()
             .map { entries ->
                 entries.map(RoomConsumptionPerDay::toDomainModel)
                     .filter { it.dateTime.isAfter(LocalDate.now().minusDays(7)) }
@@ -32,7 +30,7 @@ class HydrationDataSource @Inject constructor(
             }
 
     fun addEntry(milliliters: Int) {
-        repository.addEntry(
+        dataSource.addEntry(
             RoomHydrationEntry(
                 id = null,
                 milliliters = milliliters,

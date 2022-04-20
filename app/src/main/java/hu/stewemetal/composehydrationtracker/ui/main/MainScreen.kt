@@ -13,7 +13,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -27,9 +26,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import hu.stewemetal.composehydrationtracker.R
-import hu.stewemetal.composehydrationtracker.Screen.BottomNavScreen.Entries
-import hu.stewemetal.composehydrationtracker.Screen.BottomNavScreen.Stats
-import hu.stewemetal.composehydrationtracker.bottomNavItems
+import hu.stewemetal.composehydrationtracker.ui.Screen.BottomNavScreen.Entries
+import hu.stewemetal.composehydrationtracker.ui.Screen.BottomNavScreen.Stats
+import hu.stewemetal.composehydrationtracker.ui.bottomNavItems
 import hu.stewemetal.composehydrationtracker.ui.main.entries.EntriesScreen
 import hu.stewemetal.composehydrationtracker.ui.main.stats.StatsScreen
 

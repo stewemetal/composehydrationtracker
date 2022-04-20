@@ -4,7 +4,7 @@ import hu.stewemetal.composehydrationtracker.data.model.RoomConsumptionPerDay
 import hu.stewemetal.composehydrationtracker.data.model.RoomHydrationEntry
 import kotlinx.coroutines.flow.Flow
 
-interface HydrationEntriesRepository {
+interface HydrationEntriesDataSource {
 
     suspend fun entries(): Flow<List<RoomHydrationEntry>>
 

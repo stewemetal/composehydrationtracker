@@ -11,9 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
-class RoomInitializer(
-    val application: Application,
-) {
+class RoomInitializer {
 
     @EntryPoint
     @InstallIn(SingletonComponent::class)
@@ -21,7 +19,7 @@ class RoomInitializer(
         fun HydrationEntryDao(): HydrationEntryDao
     }
 
-    fun init() {
+    fun init(application: Application) {
         EntryPointAccessors.fromApplication(
             application,
             DatabaseInitializerEntryPoint::class.java,

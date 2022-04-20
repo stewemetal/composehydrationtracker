@@ -1,4 +1,4 @@
-package hu.stewemetal.composehydrationtracker
+package hu.stewemetal.composehydrationtracker.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,10 +10,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import hu.stewemetal.composehydrationtracker.Screen.Add
-import hu.stewemetal.composehydrationtracker.Screen.BottomNavScreen.Entries
-import hu.stewemetal.composehydrationtracker.Screen.BottomNavScreen.Stats
-import hu.stewemetal.composehydrationtracker.Screen.Main
+import hu.stewemetal.composehydrationtracker.R
+import hu.stewemetal.composehydrationtracker.ui.Screen.Add
+import hu.stewemetal.composehydrationtracker.ui.Screen.BottomNavScreen.Entries
+import hu.stewemetal.composehydrationtracker.ui.Screen.BottomNavScreen.Stats
+import hu.stewemetal.composehydrationtracker.ui.Screen.Main
 import hu.stewemetal.composehydrationtracker.ui.add.AddDrinkScreen
 import hu.stewemetal.composehydrationtracker.ui.main.MainScreen
 import hu.stewemetal.composehydrationtracker.ui.theme.HydrationTrackerTheme

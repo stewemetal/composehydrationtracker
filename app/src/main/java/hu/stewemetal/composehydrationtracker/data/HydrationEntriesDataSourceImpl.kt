@@ -5,9 +5,10 @@ import hu.stewemetal.composehydrationtracker.data.model.RoomHydrationEntry
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class HydrationEntriesRepositoryImpl @Inject constructor(
+class HydrationEntriesDataSourceImpl @Inject constructor(
     private val hydrationEntryDao: HydrationEntryDao,
-) : HydrationEntriesRepository {
+) : HydrationEntriesDataSource {
+
     override suspend fun entries(): Flow<List<RoomHydrationEntry>> =
         hydrationEntryDao.getAll()
 
