@@ -1,8 +1,8 @@
 # HydrationTracker
 
-This is a demo project for the Webuni Android webinar held on 2022.04.20.
+This is a demo project for Jetpack Compose interoperability and UI testing.
 
-The project implements an Android app build with AAC and Jetpack Compose
+The project implements an Android app build with AAC and Jetpack Compose.
 
 
 ||||
