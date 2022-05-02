@@ -1,6 +1,6 @@
 # HydrationTracker
 
-This is a demo project for Jetpack Compose interoperability and UI testing.
+This is a demo project featuring Jetpack Compose and View interoperability, and Compose UI testing.
 
 The project implements an Android app built with AAC and Jetpack Compose.
 
