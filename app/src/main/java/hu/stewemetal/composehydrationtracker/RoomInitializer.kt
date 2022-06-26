@@ -9,7 +9,8 @@ import hu.stewemetal.composehydrationtracker.data.HydrationEntryDao
 import hu.stewemetal.composehydrationtracker.data.model.RoomHydrationEntry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import javax.inject.Inject
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class RoomInitializer {
 
@@ -26,16 +27,16 @@ class RoomInitializer {
         ).HydrationEntryDao().also { dao ->
             runBlocking(Dispatchers.IO) {
                 listOf(
-                    RoomHydrationEntry(1, 100, "2022-04-13"),
-                    RoomHydrationEntry(2, 250, "2022-04-13"),
-                    RoomHydrationEntry(3, 500, "2022-04-14"),
-                    RoomHydrationEntry(4, 100, "2022-04-15"),
-                    RoomHydrationEntry(5, 500, "2022-04-15"),
-                    RoomHydrationEntry(6, 100, "2022-04-16"),
-                    RoomHydrationEntry(7, 100, "2022-04-16"),
-                    RoomHydrationEntry(8, 100, "2022-04-16"),
-                    RoomHydrationEntry(9, 500, "2022-04-17"),
-                    RoomHydrationEntry(10, 500, "2022-04-17"),
+                    RoomHydrationEntry(1, 100, daysBeforeToday(4)),
+                    RoomHydrationEntry(2, 250, daysBeforeToday(4)),
+                    RoomHydrationEntry(3, 500, daysBeforeToday(3)),
+                    RoomHydrationEntry(4, 100, daysBeforeToday(2)),
+                    RoomHydrationEntry(5, 500, daysBeforeToday(2)),
+                    RoomHydrationEntry(6, 100, daysBeforeToday(1)),
+                    RoomHydrationEntry(7, 100, daysBeforeToday(1)),
+                    RoomHydrationEntry(8, 100, daysBeforeToday(1)),
+                    RoomHydrationEntry(9, 500, daysBeforeToday(0)),
+                    RoomHydrationEntry(10, 500, daysBeforeToday(0)),
                 ).forEach {
                     dao.insert(it)
                 }
@@ -43,4 +44,6 @@ class RoomInitializer {
         }
     }
 
+    private fun daysBeforeToday(days: Int): String =
+        LocalDate.now().minusDays(days.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
 }

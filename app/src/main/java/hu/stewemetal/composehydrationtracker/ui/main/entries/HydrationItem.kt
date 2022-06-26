@@ -3,7 +3,6 @@ package hu.stewemetal.composehydrationtracker.ui.main.entries
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.MaterialTheme
@@ -26,11 +25,11 @@ fun HydrationItem(item: HydrationEntry) {
     Row(
         modifier = Modifier
             .background(backgroundColor)
-            .fillMaxWidth()
             .wrapContentHeight(
                 align = Alignment.CenterVertically,
             )
             .padding(16.dp)
+            .semantics(mergeDescendants = true) {}
             .testTag("hydration_item"),
     ) {
         Text(
@@ -59,7 +58,7 @@ fun HydrationItemPreview() {
             item = HydrationEntry(
                 id = null,
                 milliliters = 100,
-                dateTime = LocalDate.now(),
+                dateTime = LocalDate.of(2022, 5, 3),
             )
         )
     }

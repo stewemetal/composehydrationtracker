@@ -6,9 +6,27 @@
         <entry key="../../../../../../layout/compose-model-1650472997663.xml" value="0.5" />
         <entry key="../../../../../../layout/compose-model-1650472997756.xml" value="0.18518518518518517" />
         <entry key="../../../../../../layout/compose-model-1650473609740.xml" value="0.1" />
+        <entry key="../../../../../../layout/compose-model-1651335038104.xml" value="0.24605103280680438" />
+        <entry key="../../../../../../layout/compose-model-1651337412450.xml" value="0.22037037037037038" />
+        <entry key="../../../../../../layout/compose-model-1651347929263.xml" value="0.2740740740740741" />
+        <entry key="../../../../../../layout/compose-model-1651393297872.xml" value="0.1391251518833536" />
+        <entry key="../../../../../../layout/compose-model-1651393299583.xml" value="0.2814814814814815" />
+        <entry key="../../../../../../layout/compose-model-1651439485583.xml" value="0.45" />
+        <entry key="../../../../../../layout/compose-model-1651439485584.xml" value="0.21388888888888888" />
+        <entry key="../../../../../../layout/compose-model-1651440496455.xml" value="0.5166666666666667" />
+        <entry key="../../../../../../layout/compose-model-1651475020428.xml" value="0.1" />
+        <entry key="../../../../../../layout/compose-model-1651478093005.xml" value="0.13973268529769137" />
+        <entry key="../../../../../../layout/compose-model-1651478378446.xml" value="0.3212962962962963" />
+        <entry key="../../../../../../layout/compose-model-1651483410312.xml" value="0.75" />
+        <entry key="../../../../../../layout/compose-model-1651483410338.xml" value="0.344559585492228" />
+        <entry key="../../../../../../layout/compose-model-1651578725166.xml" value="0.4676165803108808" />
+        <entry key="../../../../../../layout/compose-model-1651578739545.xml" value="0.1685185185185185" />
+        <entry key="../../../../../../layout/compose-model-1651676433685.xml" value="0.2345078979343864" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_entry.xml" value="0.35054347826086957" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

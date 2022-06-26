@@ -34,6 +34,7 @@ fun PredefinedValuesInput(
 
 @Preview(
     name = "Predefined intake, Light mode",
+    showBackground = true,
 )
 @Preview(
     name = "Predefined intake, Dark mode",

@@ -8,6 +8,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import hu.stewemetal.composehydrationtracker.ui.add.AddDrink
+import hu.stewemetal.composehydrationtracker.ui.add.PredefinedValuesInput
 import hu.stewemetal.composehydrationtracker.ui.theme.HydrationTrackerTheme
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -31,6 +32,7 @@ class AddDrinkScreenTest {
                     )
                 }
             }
+
             onNodeWithTag("custom_value_input").assertIsDisplayed()
         }
     }
@@ -125,6 +127,27 @@ class AddDrinkScreenTest {
             onNodeWithText("Add custom value").performClick()
 
             assertEquals(120, addedDrinkValue)
+        }
+    }
+
+    @Test
+    fun predefinedValuesInput_addsCorrectValues() {
+        composeTestRule.apply {
+            var addedDrinkValue = 0
+
+            setContent {
+                HydrationTrackerTheme {
+                    PredefinedValuesInput(
+                        onAddDrink = { value ->
+                            addedDrinkValue = value
+                        },
+                    )
+                }
+            }
+
+            onNodeWithText("500 ml").performClick()
+
+            assertEquals(500, addedDrinkValue)
         }
     }
 }

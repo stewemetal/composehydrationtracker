@@ -8,8 +8,9 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import hu.stewemetal.composehydrationtracker.data.HydrationRepository
 import hu.stewemetal.composehydrationtracker.domain.model.HydrationEntry
+import hu.stewemetal.composehydrationtracker.ui.main.entries.EntriesState.Content
+import hu.stewemetal.composehydrationtracker.ui.main.entries.EntriesState.Loading
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,9 +18,9 @@ import javax.inject.Inject
 @HiltViewModel
 class EntriesViewModel @Inject constructor(
     private val dataSource: HydrationRepository,
-): ViewModel() {
+) : ViewModel() {
 
-    var uiState by mutableStateOf(EntriesState())
+    var uiState by mutableStateOf<EntriesState>(Loading)
         private set
 
     init {
@@ -27,12 +28,20 @@ class EntriesViewModel @Inject constructor(
             dataSource.entries()
                 .flowOn(Dispatchers.IO)
                 .collect {
-                    uiState = uiState.copy(entries = it)
+                    val state = uiState
+                    uiState = if (state is Content) {
+                        state.copy(entries = it)
+                    } else {
+                        Content(entries = it)
+                    }
                 }
         }
     }
 }
 
-data class EntriesState(
-    val entries: List<HydrationEntry>? = null,
-)
+sealed class EntriesState {
+    object Loading : EntriesState()
+    data class Content(
+        val entries: List<HydrationEntry> = emptyList(),
+    ) : EntriesState()
+}

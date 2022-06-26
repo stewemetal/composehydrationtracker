@@ -11,4 +11,5 @@
     <string name="add_custom_value">Add custom value</string>
     <string name="back_arrow">Back arrow</string>
     <string name="stats_empty">Can\'t show stats</string>
+    <string name="empty_entries_list">Recorded entries will be shown here</string>
 </resources>
