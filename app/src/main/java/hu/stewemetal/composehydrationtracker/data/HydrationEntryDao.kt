@@ -14,8 +14,11 @@ interface HydrationEntryDao {
     @Query("SELECT * FROM hydration_entry ORDER BY id DESC")
     fun getAll(): Flow<List<RoomHydrationEntry>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(entry: RoomHydrationEntry)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAll(entries: List<RoomHydrationEntry>)
 
     @Query("SELECT SUM(milliliters) as milliliters, date_time FROM hydration_entry GROUP BY date_time")
     fun getConsumptionPerDay(): Flow<List<RoomConsumptionPerDay>>

@@ -54,7 +54,10 @@ class AddDrinkScreenTest {
                 }
             }
 
-            onNodeWithText("100 ml").performClick()
+            onNodeWithText("100 ml").apply {
+                performTextInput("What will happen here?") // Failed to perform input error
+                performClick()
+            }
 
             assertEquals(100, addedDrinkValue)
         }

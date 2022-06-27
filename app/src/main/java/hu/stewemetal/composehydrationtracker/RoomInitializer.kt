@@ -26,24 +26,24 @@ class RoomInitializer {
             DatabaseInitializerEntryPoint::class.java,
         ).HydrationEntryDao().also { dao ->
             runBlocking(Dispatchers.IO) {
-                listOf(
-                    RoomHydrationEntry(1, 100, daysBeforeToday(4)),
-                    RoomHydrationEntry(2, 250, daysBeforeToday(4)),
-                    RoomHydrationEntry(3, 500, daysBeforeToday(3)),
-                    RoomHydrationEntry(4, 100, daysBeforeToday(2)),
-                    RoomHydrationEntry(5, 500, daysBeforeToday(2)),
-                    RoomHydrationEntry(6, 100, daysBeforeToday(1)),
-                    RoomHydrationEntry(7, 100, daysBeforeToday(1)),
-                    RoomHydrationEntry(8, 100, daysBeforeToday(1)),
-                    RoomHydrationEntry(9, 500, daysBeforeToday(0)),
-                    RoomHydrationEntry(10, 500, daysBeforeToday(0)),
-                ).forEach {
-                    dao.insert(it)
-                }
+                dao.insertAll(
+                    listOf(
+                        RoomHydrationEntry(1, 100, daysBeforeTheTalk(4)),
+                        RoomHydrationEntry(2, 250, daysBeforeTheTalk(4)),
+                        RoomHydrationEntry(3, 500, daysBeforeTheTalk(3)),
+                        RoomHydrationEntry(4, 100, daysBeforeTheTalk(2)),
+                        RoomHydrationEntry(5, 500, daysBeforeTheTalk(2)),
+                        RoomHydrationEntry(6, 100, daysBeforeTheTalk(1)),
+                        RoomHydrationEntry(7, 100, daysBeforeTheTalk(1)),
+                        RoomHydrationEntry(8, 100, daysBeforeTheTalk(1)),
+                        RoomHydrationEntry(9, 500, daysBeforeTheTalk(0)),
+                        RoomHydrationEntry(10, 500, daysBeforeTheTalk(0)),
+                    )
+                )
             }
         }
     }
 
-    private fun daysBeforeToday(days: Int): String =
-        LocalDate.now().minusDays(days.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
+    private fun daysBeforeTheTalk(days: Int): String =
+        LocalDate.of(2022, 7, 7).minusDays(days.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
 }
