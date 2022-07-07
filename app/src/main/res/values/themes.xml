@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.ComposeHydrationTracker" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.ComposeHydrationTracker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/blue_700</item>
+        <item name="colorPrimary">#FF2196F3</item>
     </style>
 </resources>

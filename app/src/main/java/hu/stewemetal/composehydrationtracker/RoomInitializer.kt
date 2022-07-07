@@ -10,7 +10,6 @@ import hu.stewemetal.composehydrationtracker.data.model.RoomHydrationEntry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class RoomInitializer {
 
@@ -27,23 +26,30 @@ class RoomInitializer {
         ).HydrationEntryDao().also { dao ->
             runBlocking(Dispatchers.IO) {
                 dao.insertAll(
-                    listOf(
-                        RoomHydrationEntry(1, 100, daysBeforeTheTalk(4)),
-                        RoomHydrationEntry(2, 250, daysBeforeTheTalk(4)),
-                        RoomHydrationEntry(3, 500, daysBeforeTheTalk(3)),
-                        RoomHydrationEntry(4, 100, daysBeforeTheTalk(2)),
-                        RoomHydrationEntry(5, 500, daysBeforeTheTalk(2)),
-                        RoomHydrationEntry(6, 100, daysBeforeTheTalk(1)),
-                        RoomHydrationEntry(7, 100, daysBeforeTheTalk(1)),
-                        RoomHydrationEntry(8, 100, daysBeforeTheTalk(1)),
-                        RoomHydrationEntry(9, 500, daysBeforeTheTalk(0)),
-                        RoomHydrationEntry(10, 500, daysBeforeTheTalk(0)),
-                    )
+                    getSeedEntries()
                 )
             }
         }
     }
 
-    private fun daysBeforeTheTalk(days: Int): String =
-        LocalDate.of(2022, 7, 7).minusDays(days.toLong()).format(DateTimeFormatter.ISO_LOCAL_DATE)
+    private fun daysBeforeTheTalk(days: Int): LocalDate =
+        LocalDate.of(2022, 7, 7).minusDays(days.toLong())
+
+    companion object {
+        fun getSeedEntries() = listOf(
+            RoomHydrationEntry(1, 100, daysBeforeTheTalk(4)),
+            RoomHydrationEntry(2, 250, daysBeforeTheTalk(4)),
+            RoomHydrationEntry(3, 500, daysBeforeTheTalk(3)),
+            RoomHydrationEntry(4, 100, daysBeforeTheTalk(2)),
+            RoomHydrationEntry(5, 500, daysBeforeTheTalk(2)),
+            RoomHydrationEntry(6, 100, daysBeforeTheTalk(1)),
+            RoomHydrationEntry(7, 100, daysBeforeTheTalk(1)),
+            RoomHydrationEntry(8, 100, daysBeforeTheTalk(1)),
+            RoomHydrationEntry(9, 500, daysBeforeTheTalk(0)),
+            RoomHydrationEntry(10, 100, daysBeforeTheTalk(0)),
+        )
+
+        private fun daysBeforeTheTalk(days: Int): LocalDate =
+            LocalDate.of(2022, 7, 7).minusDays(days.toLong())
+    }
 }

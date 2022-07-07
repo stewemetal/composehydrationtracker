@@ -8,7 +8,6 @@ import hu.stewemetal.composehydrationtracker.domain.model.HydrationEntry
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class HydrationRepository @Inject constructor(
@@ -25,8 +24,8 @@ class HydrationRepository @Inject constructor(
         dataSource.stats()
             .map { entries ->
                 entries.map(RoomConsumptionPerDay::toDomainModel)
-                    .filter { it.dateTime.isAfter(LocalDate.now().minusDays(7)) }
-                    .sortedBy { it.dateTime }
+                    .filter { it.date.isAfter(LocalDate.now().minusDays(7)) }
+                    .sortedBy { it.date }
             }
 
     fun addEntry(milliliters: Int) {
@@ -34,7 +33,7 @@ class HydrationRepository @Inject constructor(
             RoomHydrationEntry(
                 id = null,
                 milliliters = milliliters,
-                dateTime = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
+                date = LocalDate.now(),
             )
         )
     }

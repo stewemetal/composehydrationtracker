@@ -21,6 +21,13 @@
             android:exported="true"
             android:theme="@style/Theme.ComposeHydrationTracker"
             >
+
+        </activity>
+        <activity
+            android:name=".ui.ComposeViewDemoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ComposeHydrationTracker"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

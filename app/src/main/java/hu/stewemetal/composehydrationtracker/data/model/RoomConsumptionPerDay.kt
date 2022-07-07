@@ -8,11 +8,11 @@ import java.time.LocalDate
 @Entity(tableName = "hydration_entry")
 data class RoomConsumptionPerDay(
     @ColumnInfo(name = "milliliters") val milliliters: Int,
-    @ColumnInfo(name = "date_time") val dateTime: String,
+    @ColumnInfo(name = "date_time") val date: LocalDate,
 )
 
 fun RoomConsumptionPerDay.toDomainModel() =
     ConsumptionPerDay(
         milliliters = milliliters,
-        dateTime = LocalDate.parse(dateTime)
+        date = date,
     )

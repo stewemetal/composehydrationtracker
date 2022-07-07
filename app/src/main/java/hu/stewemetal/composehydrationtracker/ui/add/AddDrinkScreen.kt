@@ -15,6 +15,9 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -28,12 +31,13 @@ import hu.stewemetal.composehydrationtracker.R
 import hu.stewemetal.composehydrationtracker.R.string
 import hu.stewemetal.composehydrationtracker.ui.add.AddDrinkState.AcceptingInput
 import hu.stewemetal.composehydrationtracker.ui.add.AddDrinkState.DrinkSaved
+import hu.stewemetal.composehydrationtracker.ui.view.DrinkButton
 
 @Composable
 fun AddDrinkScreen(
+    viewModel: AddDrinkViewModel = hiltViewModel(),
     onBackClick: () -> Boolean,
 ) {
-    val viewModel = hiltViewModel<AddDrinkViewModel>()
 
     when (viewModel.uiState) {
         AcceptingInput -> {
@@ -92,6 +96,14 @@ fun AddDrink(
             PredefinedValuesInput { valueToAdd ->
                 addDrink(valueToAdd)
             }
+
+            var isLoading by remember { mutableStateOf(false) }
+            DrinkButton(
+                intakeValue = 100,
+                onClick = { intake -> isLoading = true },
+                isLoading = isLoading,
+                onAnimationEnded = { isLoading = false }
+            )
         }
     }
 }

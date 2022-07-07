@@ -10,12 +10,12 @@ import java.time.LocalDate
 data class RoomHydrationEntry(
     @PrimaryKey val id: Long?,
     @ColumnInfo(name = "milliliters") val milliliters: Int,
-    @ColumnInfo(name = "date_time") val dateTime: String,
+    @ColumnInfo(name = "date_time") val date: LocalDate,
 )
 
 fun RoomHydrationEntry.toDomainModel() =
     HydrationEntry(
         id = id,
         milliliters = milliliters,
-        dateTime = LocalDate.parse(dateTime)
+        date = date
     )

@@ -16,11 +16,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import hu.stewemetal.composehydrationtracker.R.string
+import hu.stewemetal.composehydrationtracker.RoomInitializer
+import hu.stewemetal.composehydrationtracker.data.model.toDomainModel
 import hu.stewemetal.composehydrationtracker.domain.model.HydrationEntry
 import hu.stewemetal.composehydrationtracker.ui.main.entries.EntriesState.Content
 import hu.stewemetal.composehydrationtracker.ui.main.entries.EntriesState.Loading
 import hu.stewemetal.composehydrationtracker.ui.theme.HydrationTrackerTheme
-import java.time.LocalDate
 
 @Composable
 fun EntriesScreen(
@@ -79,13 +80,8 @@ fun EntriesLoading() {
 fun EntryListPreview() {
     HydrationTrackerTheme {
         EntryList(
-            entries = List(10) {
-                HydrationEntry(
-                    id = null,
-                    milliliters = 100 + it * 10,
-                    dateTime = LocalDate.now(),
-                )
-            }
+            entries = RoomInitializer.getSeedEntries()
+                .map { it.toDomainModel() }.reversed().take(8)
         )
     }
 }

@@ -20,7 +20,7 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="2022-05-03"
+        tools:text="2022-07-07"
         />
 
 </LinearLayout>

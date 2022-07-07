@@ -22,8 +22,20 @@
         <entry key="../../../../../../layout/compose-model-1651578725166.xml" value="0.4676165803108808" />
         <entry key="../../../../../../layout/compose-model-1651578739545.xml" value="0.1685185185185185" />
         <entry key="../../../../../../layout/compose-model-1651676433685.xml" value="0.2345078979343864" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
+        <entry key="../../../../../../layout/compose-model-1656365040055.xml" value="0.1" />
+        <entry key="../../../../../../layout/compose-model-1656667764553.xml" value="0.225" />
+        <entry key="../../../../../../layout/compose-model-1656673401448.xml" value="0.75" />
+        <entry key="../../../../../../layout/compose-model-1656683575039.xml" value="2.0" />
+        <entry key="../../../../../../layout/compose-model-1656768958010.xml" value="0.3424831081081081" />
+        <entry key="../../../../../../layout/compose-model-1656773057002.xml" value="1.32" />
+        <entry key="../../../../../../layout/compose-model-1656850808274.xml" value="0.12795608108108109" />
+        <entry key="../../../../../../layout/compose-model-1656852806529.xml" value="0.1241554054054054" />
+        <entry key="../../../../../../layout/compose-model-1657006566538.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/activity_compose_view_demo.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.41436004638671875" />
+        <entry key="app/src/main/res/layout/example_compose_view.xml" value="0.2735562310030395" />
         <entry key="app/src/main/res/layout/item_entry.xml" value="0.35054347826086957" />
+        <entry key="app/src/main/res/layout/view_custom_button.xml" value="0.23125" />
       </map>
     </option>
   </component>

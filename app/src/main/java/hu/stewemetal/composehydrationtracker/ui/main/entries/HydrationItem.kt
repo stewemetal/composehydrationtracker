@@ -38,7 +38,7 @@ fun HydrationItem(item: HydrationEntry) {
             modifier = Modifier.weight(1f),
         )
         Text(
-            "${item.dateTime}",
+            "${item.date}",
             color = contentColorFor(backgroundColor = backgroundColor),
         )
     }
@@ -58,7 +58,7 @@ fun HydrationItemPreview() {
             item = HydrationEntry(
                 id = null,
                 milliliters = 100,
-                dateTime = LocalDate.of(2022, 5, 3),
+                date = LocalDate.of(2022, 5, 3),
             )
         )
     }
