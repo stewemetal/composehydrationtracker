@@ -19,3 +19,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComposeHydrationTracker"
 include ':app'
+include ':feature:dailyconsumption'

@@ -22,6 +22,8 @@ plugins {
     alias(libs.plugins.nl.littlerobots.version.catalog.update)
     alias(libs.plugins.com.github.ben.manes.versions)
     alias(libs.plugins.com.autonomousapps.dependency.analysis)
+    id 'com.android.library' version '7.2.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
 }
 
 task clean(type: Delete) {
