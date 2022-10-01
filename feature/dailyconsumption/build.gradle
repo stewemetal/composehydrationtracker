@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk Integer.parseInt(libs.versions.android.target.sdk.get())
 
     defaultConfig {
-        minSdk 26
-        targetSdk 32
+        minSdk Integer.parseInt(libs.versions.android.min.sdk.get())
+        targetSdk Integer.parseInt(libs.versions.android.target.sdk.get())
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -42,8 +42,8 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
     implementation 'com.google.android.material:material:1.6.1'
     implementation(libs.bundles.compose)
 

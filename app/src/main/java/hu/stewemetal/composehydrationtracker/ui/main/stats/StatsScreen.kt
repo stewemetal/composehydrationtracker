@@ -36,10 +36,22 @@ fun StatsScreen(
 
 @Composable
 fun StatsContent(stats: List<ConsumptionPerDay>?) {
-    if (stats == null || stats.isEmpty()) {
+    if (stats == null) {
+        StatsError()
+    } else if (stats.isEmpty()) {
         EmptyStats()
     } else {
         StatsChart(stats = stats) {}
+    }
+}
+
+@Composable
+fun StatsError() {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Text(stringResource(string.stats_error))
     }
 }
 

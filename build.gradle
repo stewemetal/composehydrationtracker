@@ -29,3 +29,42 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+versionCatalogUpdate {
+    pin {
+        // pins then libraries that you don't want to automatically update
+//        versions = ["my-version-name", "other-version"]
+    }
+    keep {
+        // keep has the same options as pin to keep specific entries
+        versions = [
+                "android-compile-sdk",
+                "android-min-sdk",
+                "android-target-sdk",
+                "androidx-activity-ktx",
+                "androidx-compose-compiler",
+                "com-squareup-leakcanary-android",
+                "jvm-target",
+        ]
+    }
+}
+
+def isNonStable = { String version ->
+    def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
+    def regex = /^[0-9,.v-]+(-[ra])?$/
+    return !stableKeyword && !(version ==~ regex)
+}
+
+tasks.named("dependencyUpdates").configure {
+    resolutionStrategy {
+        componentSelection {
+            all {
+                // reject all non stable versions
+                // disallow release candidates as upgradable versions from stable versions
+                if (isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)) {
+                    reject('Updating stable to non stable is not allowed')
+                }
+            }
+        }
+    }
+}

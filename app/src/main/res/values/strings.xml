@@ -10,6 +10,7 @@
     <string name="water_intake_hint">Water intake</string>
     <string name="add_custom_value">Add custom value</string>
     <string name="back_arrow">Back arrow</string>
-    <string name="stats_empty">Can\'t show stats</string>
+    <string name="stats_empty">There are no entries in the last 7 days</string>
+    <string name="stats_error">Something went wrong\nCan\'t show stats</string>
     <string name="empty_entries_list">Recorded entries will be shown here</string>
 </resources>
