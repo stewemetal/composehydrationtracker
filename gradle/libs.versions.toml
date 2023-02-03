@@ -1,6 +1,6 @@
 [versions]
 android-compile-sdk = "32"
-android-gradle-plugin = "7.2.1"
+android-gradle-plugin = "7.4.0"
 android-min-sdk = "26"
 android-target-sdk = "32"
 androidx-activity-ktx = "1.4.0"

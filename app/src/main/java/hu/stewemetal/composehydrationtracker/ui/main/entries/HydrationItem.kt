@@ -58,7 +58,7 @@ fun HydrationItemPreview() {
             item = HydrationEntry(
                 id = null,
                 milliliters = 100,
-                date = LocalDate.of(2022, 5, 3),
+                date = LocalDate.of(2023, 2, 4),
             )
         )
     }

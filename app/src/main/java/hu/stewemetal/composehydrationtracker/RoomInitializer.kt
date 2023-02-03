@@ -32,9 +32,6 @@ class RoomInitializer {
         }
     }
 
-    private fun daysBeforeTheTalk(days: Int): LocalDate =
-        LocalDate.of(2022, 7, 7).minusDays(days.toLong())
-
     companion object {
         fun getSeedEntries() = listOf(
             RoomHydrationEntry(1, 100, daysBeforeTheTalk(4)),
@@ -50,6 +47,6 @@ class RoomInitializer {
         )
 
         private fun daysBeforeTheTalk(days: Int): LocalDate =
-            LocalDate.of(2022, 7, 7).minusDays(days.toLong())
+            LocalDate.of(2023, 2, 4).minusDays(days.toLong())
     }
 }
