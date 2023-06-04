@@ -14,18 +14,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
 import hu.stewemetal.composehydrationtracker.R.string
-import hu.stewemetal.composehydrationtracker.RoomInitializer
+import hu.stewemetal.composehydrationtracker.data.RoomInitializer
 import hu.stewemetal.composehydrationtracker.data.model.toDomainModel
 import hu.stewemetal.composehydrationtracker.domain.model.HydrationEntry
 import hu.stewemetal.composehydrationtracker.ui.main.entries.EntriesState.Content
 import hu.stewemetal.composehydrationtracker.ui.main.entries.EntriesState.Loading
 import hu.stewemetal.composehydrationtracker.ui.theme.HydrationTrackerTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun EntriesScreen(
-    viewModel: EntriesViewModel = hiltViewModel(),
+    viewModel: EntriesViewModel = koinViewModel(),
 ) {
 
     when (val uiState = viewModel.uiState) {

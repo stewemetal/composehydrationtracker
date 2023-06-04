@@ -3,9 +3,10 @@ package hu.stewemetal.composehydrationtracker.data
 import hu.stewemetal.composehydrationtracker.data.model.RoomConsumptionPerDay
 import hu.stewemetal.composehydrationtracker.data.model.RoomHydrationEntry
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
+import org.koin.core.annotation.Single
 
-class HydrationEntriesDataSourceImpl @Inject constructor(
+@Single(binds = [HydrationEntriesDataSource::class])
+class HydrationEntriesDataSourceImpl(
     private val hydrationEntryDao: HydrationEntryDao,
 ) : HydrationEntriesDataSource {
 

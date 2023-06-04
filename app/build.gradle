@@ -1,11 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id 'com.google.devtools.ksp'
 }
 
 android {
+    namespace 'hu.stewemetal.composehydrationtracker'
+
     compileSdk Integer.parseInt(libs.versions.android.target.sdk.get())
 
     defaultConfig {
@@ -34,8 +35,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = libs.versions.jvm.target.get()
@@ -52,47 +53,49 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    namespace 'hu.stewemetal.composehydrationtracker'
+    applicationVariants.configureEach { variant ->
+        variant.sourceSets.java.each {
+            it.srcDirs += "build/generated/ksp/${variant.name}/kotlin"
+        }
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    // Hilt
-    implementation(libs.bundles.hilt)
-    implementation 'com.google.android.material:material:1.6.1'
-    kapt(libs.com.google.dagger.hilt.compiler)
-    implementation(libs.com.google.dagger.hilt.navigation.compose)
-    kaptAndroidTest(libs.com.google.dagger.hilt.android.compiler)
-    androidTestImplementation(libs.com.google.dagger.hilt.android.testing)
+    implementation libs.androidx.core.ktx
 
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation(libs.bundles.koin)
+    implementation libs.androidx.constraintlayout
+    implementation libs.com.google.android.material
+    ksp(libs.koin.ksp.compiler)
+
+    implementation libs.androidx.recyclerview
     implementation(libs.bundles.compose)
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.0'
-    implementation 'androidx.activity:activity-compose:1.5.0'
-    implementation "androidx.navigation:navigation-compose:2.5.0"
-    testImplementation 'junit:junit:4.13.2'
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.activity.compose
+    implementation libs.androidx.navigation.compose
+    testImplementation libs.junit
 
     def room_version = "2.4.2"
     implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     implementation(libs.com.airbnb.android.lottie.compose)
 
     implementation 'com.github.PhilJay:MPAndroidChart:3.1.0'
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation libs.androidx.test.ext.junit
+    androidTestImplementation libs.androidx.test.ext.junit.ktx
+    androidTestImplementation libs.androidx.test.espresso.core
 
-    androidTestImplementation 'androidx.test:core:1.4.0'
-    androidTestImplementation 'androidx.test:rules:1.4.0'
-    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation libs.androidx.test.core
+    androidTestImplementation libs.androidx.test.rules
+    androidTestImplementation libs.androidx.test.runner
     // Test rules and transitive dependencies:
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    androidTestImplementation libs.androidx.compose.ui.test.junit4
     // Needed for createComposeRule, but not createAndroidComposeRule:
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    debugImplementation libs.androidx.compose.ui.test.manifest
 
-    debugImplementation "androidx.customview:customview:1.1.0"
-    debugImplementation "androidx.customview:customview-poolingcontainer:1.0.0-rc01"
+    debugImplementation libs.androidx.customview
+    debugImplementation libs.androidx.customview.poolingcontainer
 }

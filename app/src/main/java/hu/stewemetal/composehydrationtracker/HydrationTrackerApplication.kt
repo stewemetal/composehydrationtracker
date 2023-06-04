@@ -1,14 +1,27 @@
 package hu.stewemetal.composehydrationtracker
 
 import android.app.Application
-import com.github.mikephil.charting.utils.Utils.init
-import dagger.hilt.android.HiltAndroidApp
+import hu.stewemetal.composehydrationtracker.data.RoomInitializer
+import hu.stewemetal.composehydrationtracker.di.DataModule
+import hu.stewemetal.composehydrationtracker.ui.ViewModelModule
+import org.koin.android.ext.android.inject
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.GlobalContext.startKoin
+import org.koin.ksp.generated.module
 
-@HiltAndroidApp
-class HydrationTrackerApplication: Application() {
+class HydrationTrackerApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        RoomInitializer().init(this)
+
+        startKoin {
+            androidContext(this@HydrationTrackerApplication)
+            modules(
+                DataModule().module,
+                ViewModelModule().module,
+            )
+        }
+
+        inject<RoomInitializer>().value.init()
     }
 }

@@ -7,10 +7,11 @@ import hu.stewemetal.composehydrationtracker.domain.model.ConsumptionPerDay
 import hu.stewemetal.composehydrationtracker.domain.model.HydrationEntry
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import org.koin.core.annotation.Singleton
 import java.time.LocalDate
-import javax.inject.Inject
 
-class HydrationRepository @Inject constructor(
+@Singleton
+class HydrationRepository(
     private val dataSource: HydrationEntriesDataSource,
 ) {
 

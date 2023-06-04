@@ -5,17 +5,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import hu.stewemetal.composehydrationtracker.data.HydrationRepository
 import hu.stewemetal.composehydrationtracker.ui.add.AddDrinkState.AcceptingInput
 import hu.stewemetal.composehydrationtracker.ui.add.AddDrinkState.DrinkSaved
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import org.koin.android.annotation.KoinViewModel
 
-@HiltViewModel
-class AddDrinkViewModel @Inject constructor(
+@KoinViewModel
+class AddDrinkViewModel(
     private val dataSource: HydrationRepository,
 ) : ViewModel() {
 
@@ -24,7 +23,7 @@ class AddDrinkViewModel @Inject constructor(
 
     fun addDrink(milliliters: Int) {
         viewModelScope.launch {
-            withContext(IO){
+            withContext(IO) {
                 dataSource.addEntry(milliliters)
             }
             uiState = DrinkSaved
@@ -33,6 +32,6 @@ class AddDrinkViewModel @Inject constructor(
 }
 
 sealed class AddDrinkState {
-    object AcceptingInput: AddDrinkState()
-    object DrinkSaved: AddDrinkState()
+    object AcceptingInput : AddDrinkState()
+    object DrinkSaved : AddDrinkState()
 }

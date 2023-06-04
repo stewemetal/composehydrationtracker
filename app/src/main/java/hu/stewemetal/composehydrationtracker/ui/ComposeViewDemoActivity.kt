@@ -7,12 +7,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ViewCompositionStrategy.DisposeOnDetachedFromWindow
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import dagger.hilt.android.AndroidEntryPoint
 import hu.stewemetal.composehydrationtracker.databinding.ActivityComposeViewDemoBinding
 import hu.stewemetal.composehydrationtracker.ui.theme.HydrationTrackerTheme
 import hu.stewemetal.composehydrationtracker.ui.view.CustomButton
 
-@AndroidEntryPoint
 class ComposeViewDemoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityComposeViewDemoBinding

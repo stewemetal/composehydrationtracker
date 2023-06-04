@@ -22,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
@@ -32,10 +31,11 @@ import hu.stewemetal.composehydrationtracker.R.string
 import hu.stewemetal.composehydrationtracker.ui.add.AddDrinkState.AcceptingInput
 import hu.stewemetal.composehydrationtracker.ui.add.AddDrinkState.DrinkSaved
 import hu.stewemetal.composehydrationtracker.ui.view.DrinkButton
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AddDrinkScreen(
-    viewModel: AddDrinkViewModel = hiltViewModel(),
+    viewModel: AddDrinkViewModel = koinViewModel(),
     onBackClick: () -> Boolean,
 ) {
 
@@ -46,6 +46,7 @@ fun AddDrinkScreen(
                 addDrink = { value -> viewModel.addDrink(value) }
             )
         }
+
         DrinkSaved -> {
             LaunchedEffect(key1 = Unit) {
                 onBackClick()

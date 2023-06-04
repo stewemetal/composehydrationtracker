@@ -1,8 +1,4 @@
 buildscript {
-    ext {
-        compose_version = '1.2.0-rc02'
-    }
-
     repositories {
         google()
         mavenCentral()
@@ -12,7 +8,6 @@ buildscript {
     }
 
     dependencies {
-        classpath(libs.com.google.dagger.hilt.android.gradle.plugin)
         classpath(libs.com.android.tools.build.gradle)
         classpath(libs.org.jetbrains.kotlin.gradle.plugin)
     }
@@ -22,6 +17,7 @@ plugins {
     alias(libs.plugins.nl.littlerobots.version.catalog.update)
     alias(libs.plugins.com.github.ben.manes.versions)
     alias(libs.plugins.com.autonomousapps.dependency.analysis)
+    id 'com.google.devtools.ksp' version '1.8.21-1.0.11' apply false
 }
 
 task clean(type: Delete) {

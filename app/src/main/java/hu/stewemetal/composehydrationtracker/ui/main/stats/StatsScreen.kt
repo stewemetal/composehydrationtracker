@@ -14,7 +14,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM
 import com.github.mikephil.charting.data.BarData
@@ -23,10 +22,11 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import hu.stewemetal.composehydrationtracker.R.string
 import hu.stewemetal.composehydrationtracker.domain.model.ConsumptionPerDay
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun StatsScreen(
-    viewModel: StatsViewModel = hiltViewModel(),
+    viewModel: StatsViewModel = koinViewModel(),
 ) {
     val uiState = viewModel.uiState
     val stats = uiState.stats
@@ -36,7 +36,7 @@ fun StatsScreen(
 
 @Composable
 fun StatsContent(stats: List<ConsumptionPerDay>?) {
-    if (stats == null || stats.isEmpty()) {
+    if (stats.isNullOrEmpty()) {
         EmptyStats()
     } else {
         StatsChart(stats = stats) {}

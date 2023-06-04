@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dagger.hilt.android.AndroidEntryPoint
 import hu.stewemetal.composehydrationtracker.R
 import hu.stewemetal.composehydrationtracker.ui.Screen.Add
 import hu.stewemetal.composehydrationtracker.ui.Screen.BottomNavScreen.Entries
@@ -19,7 +18,6 @@ import hu.stewemetal.composehydrationtracker.ui.add.AddDrinkScreen
 import hu.stewemetal.composehydrationtracker.ui.main.MainScreen
 import hu.stewemetal.composehydrationtracker.ui.theme.HydrationTrackerTheme
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

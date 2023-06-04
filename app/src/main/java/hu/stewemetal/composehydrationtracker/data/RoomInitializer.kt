@@ -1,29 +1,18 @@
-package hu.stewemetal.composehydrationtracker
+package hu.stewemetal.composehydrationtracker.data
 
-import android.app.Application
-import dagger.hilt.EntryPoint
-import dagger.hilt.InstallIn
-import dagger.hilt.android.EntryPointAccessors
-import dagger.hilt.components.SingletonComponent
-import hu.stewemetal.composehydrationtracker.data.HydrationEntryDao
 import hu.stewemetal.composehydrationtracker.data.model.RoomHydrationEntry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import org.koin.core.annotation.Factory
 import java.time.LocalDate
 
-class RoomInitializer {
+@Factory
+class RoomInitializer(
+    private val hydrationEntryDao: HydrationEntryDao,
+) {
 
-    @EntryPoint
-    @InstallIn(SingletonComponent::class)
-    interface DatabaseInitializerEntryPoint {
-        fun HydrationEntryDao(): HydrationEntryDao
-    }
-
-    fun init(application: Application) {
-        EntryPointAccessors.fromApplication(
-            application,
-            DatabaseInitializerEntryPoint::class.java,
-        ).HydrationEntryDao().also { dao ->
+    fun init() {
+        hydrationEntryDao.also { dao ->
             runBlocking(Dispatchers.IO) {
                 dao.insertAll(
                     getSeedEntries()
@@ -33,6 +22,7 @@ class RoomInitializer {
     }
 
     companion object {
+
         fun getSeedEntries() = listOf(
             RoomHydrationEntry(1, 100, daysBeforeTheTalk(4)),
             RoomHydrationEntry(2, 250, daysBeforeTheTalk(4)),
@@ -47,6 +37,6 @@ class RoomInitializer {
         )
 
         private fun daysBeforeTheTalk(days: Int): LocalDate =
-            LocalDate.of(2023, 2, 4).minusDays(days.toLong())
+            LocalDate.of(2023, 6, 8).minusDays(days.toLong())
     }
 }
