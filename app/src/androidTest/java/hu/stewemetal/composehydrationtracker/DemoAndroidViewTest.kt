@@ -42,7 +42,7 @@ class DemoAndroidViewTest {
             Espresso.onView(withText("Demo Button")).perform(click())
 
             // This works for now (but it might make the test flaky)
-            Espresso.onView(withText("Demo Button")).check { view, _ -> view.performClick() }
+//            Espresso.onView(withText("Demo Button")).check { view, _ -> view.performClick() }
 
             assertEquals(true, buttonClicked)
 
